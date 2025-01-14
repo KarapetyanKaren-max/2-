@@ -1,59 +1,39 @@
 package org.skypro;
 
-import java.util.Arrays;
+public class App {
+    private static Product[] products;
 
-public class ProductBasket {
-    private Product[] products = new Product[5];
+    {
+        new Product(25, "Молоко");
+        new Product(50, "Рыба");
+        new Product(35, "Хрен");
+        new Product(120, "Масло");
+        new Product(540, "Торт");
+    }
 
-    // Этот класс содержит в себе одну корзину с продуктами, которые купил один пользователь
-    // Вам нужно реализовать следующие публичные методы
-    public void addProduct(Product name) {
+    static ProductBasket basket = new ProductBasket();
+
+    static void addProduct(String name) {
         for (int number = 0; number < products.length; number++) {
-            if (products[number] == null) {
-                products[number] = name;
-                System.out.println("Продукт в корзину добавлен");
+            if (products[number].productsName.equalsIgnoreCase(name.trim())) {
+                System.out.println("Продукт есть в магазине");
+                basket.addProduct(products[number]);
                 break;
-            }
-            if (number == products.length - 1) {
-                System.out.println("корзина заполнена");
+
+            } else {
+                System.out.println("Продукта в магазине нет");
             }
         }
     }
 
-    @Override
-    public String toString() {
-        return "ProductBasket{" +
-                "products=" + Arrays.toString(products) +
-                '}';
-    }
-
-    public int priceBasket() {
-        int sum = 0;
-        if (products[0] == null) {
-            System.out.println("Корзина пуста");
-        } else {
-            for (Product variable : products) {
-                sum = sum + variable.getPrice();
-            }
-            return sum;
-        }
-        return 0;
-    }
-    public void printBasket() {
-        if (products[0] == null) {
-            System.out.println("Корзина пуста");
-        }
-        for (Product variable : products) {
-            if (variable != null) {
-                System.out.println(variable);
-            }
-        }
-        System.out.println("Цена корзины: " + priceBasket());
-    }
-    public void deleteProduct () {
-        for (int number = 0; number < products.length; number++) {
-            products[number] = null;
-        }
-        System.out.println("Корзина очищена");
+    public static void main(String[] args) {
+        System.out.println("Добави продукт в корзину");
+        String product = "молоко";
+        addProduct(product);
+        addProduct(product);
+        addProduct(product);
+        addProduct(product);
+        basket.printBasket();
+        System.out.println("Стоимость корзины: " + basket.priceBasket());
     }
 }
