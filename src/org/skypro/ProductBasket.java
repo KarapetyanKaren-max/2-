@@ -1,6 +1,7 @@
 package org.skypro;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 public class ProductBasket {
     private Product[] products = new Product[5];
@@ -19,21 +20,15 @@ public class ProductBasket {
             }
         }
     }
-
-    @Override
-    public String toString() {
-        return "ProductBasket{" +
-                "products=" + Arrays.toString(products) +
-                '}';
-    }
-
     public int priceBasket() {
         int sum = 0;
         if (products[0] == null) {
             System.out.println("Корзина пуста");
         } else {
             for (Product variable : products) {
-                sum = sum + variable.getPrice();
+                if (variable != null) {
+                    sum = sum+variable.getPrice();
+                }
             }
             return sum;
         }
@@ -45,7 +40,7 @@ public class ProductBasket {
         }
         for (Product variable : products) {
             if (variable != null) {
-                System.out.println(variable);
+                    System.out.println(variable);
             }
         }
         System.out.println("Цена корзины: " + priceBasket());
@@ -56,5 +51,26 @@ public class ProductBasket {
         }
         System.out.println("Корзина очищена");
     }
+
+    @Override
+    public String toString() {
+        return "ProductBasket{" +
+                "products=" + Arrays.toString(products) +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ProductBasket basket = (ProductBasket) o;
+        return Objects.deepEquals(products, basket.products);
+    }
+
+    @Override
+    public int hashCode() {
+        return Arrays.hashCode(products);
+    }
 }
+
 

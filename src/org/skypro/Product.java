@@ -12,7 +12,6 @@ public class Product {
         this.price = price;
         this.name = name;
     }
-
     public String getName() {
         return name;
     }
@@ -33,18 +32,12 @@ public class Product {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Product product = (Product) o;
-        return price == product.price && Objects.equals(name, product.name);
-    }
-    @Override
-    public int hashCode() {
-        return Objects.hash(name, price);
+        return price == product.price && Objects.equals(productsName, product.productsName) && Objects.equals(name, product.name);
     }
 
     @Override
-    public String toString() {
-        return "Product{" +
-                "name=" + name +
-                ", price=" + price +
-                '}';
+    public int hashCode() {
+        return Objects.hash(productsName, name, price);
     }
 }
+
