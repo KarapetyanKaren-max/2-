@@ -8,10 +8,10 @@ public class ProductBasket {
 
     // Этот класс содержит в себе одну корзину с продуктами, которые купил один пользователь
     // Вам нужно реализовать следующие публичные методы
-    public void addProduct(Product name) {
+    public void addProduct(Product product) {
         for (int number = 0; number < products.length; number++) {
             if (products[number] == null) {
-                products[number] = name;
+                products[number] = product;
                 System.out.println("Продукт в корзину добавлен");
                 break;
             }

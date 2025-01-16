@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Product {
 
-    public String productsName;
+    public String products;
     private String name;
     private int price;
 
@@ -32,12 +32,12 @@ public class Product {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Product product = (Product) o;
-        return price == product.price && Objects.equals(productsName, product.productsName) && Objects.equals(name, product.name);
+        return price == product.price && Objects.equals(products, product.products) && Objects.equals(name, product.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(productsName, name, price);
+        return Objects.hash(products, name, price);
     }
 }
 
