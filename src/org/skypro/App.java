@@ -1,22 +1,18 @@
 package org.skypro;
 
 public class App {
-    private static Product[] products;{
+    private static Product[] products;
 
-        new Product(25, "Молоко");
-        new Product(50, "Рыба");
-        new Product(35, "Хрен");
-        new Product(120, "Масло");
-        new Product(540, "Торт");
-    }
-    static ProductBasket basket = new ProductBasket();
-
-    static void addProduct(String name) {
-        for (int number = 0; number < products.length; number++)
-            if (products[number].productsName.equalsIgnoreCase(name.trim())) {
+    {
+        String name = "name";
+        for (
+                int number = 0; number < products.length; number++)
+            if (products[number].products.equalsIgnoreCase(name.trim())) {
                 System.out.println("Продукт есть в магазине");
+                ProductBasket basket = null;
                 basket.addProduct(products[number]);
                 break;
+
 
             } else {
                 System.out.println("Продукта в магазине нет");
@@ -24,12 +20,15 @@ public class App {
     }
 
     public static void main(String[] args) {
+
+        ProductBasket basket = new ProductBasket();
+        basket.addProduct(new Product(25, "Молоко"));
+        basket.addProduct(new Product(25, "Рыба"));
+        basket.addProduct(new Product(25, "Хрен"));
+        basket.addProduct(new Product(25, "Масло"));
+        basket.addProduct(new Product(25, "Торт"));
+        System.out.println();
         System.out.println("Добавить продукт в корзину");
-        String product = "молоко";
-        addProduct(product);
-        addProduct(product);
-        addProduct(product);
-        addProduct(product);
         basket.printBasket();
         System.out.println("Стоимость корзины: " + basket.priceBasket());
     }
