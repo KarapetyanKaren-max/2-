@@ -31,5 +31,6 @@ public class App {
         System.out.println("Добавить продукт в корзину");
         basket.printBasket();
         System.out.println("Стоимость корзины: " + basket.priceBasket());
+
     }
 }
